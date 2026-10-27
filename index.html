@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wayne Earn | Online Opportunities</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f6fb;
+      color: #182230;
+    }
+    header {
+      background: #123b70;
+      color: white;
+      padding: 22px 16px;
+      text-align: center;
+    }
+    header h1 { margin: 0; }
+    header p { margin-bottom: 0; }
+    nav {
+      background: #0b2850;
+      padding: 12px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 9px;
+      font-size: 14px;
+    }
+    main {
+      max-width: 850px;
+      margin: 24px auto;
+      padding: 0 14px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 12px #0000000d;
+    }
+    .hero { text-align: center; }
+    .button {
+      display: inline-block;
+      background: #147d50;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 7px;
+      text-decoration: none;
+      border: 0;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .notice {
+      background: #fff4d6;
+      padding: 13px;
+      border-left: 4px solid #e4a11b;
+      border-radius: 5px;
+    }
+    footer {
+      text-align: center;
+      padding: 22px;
+      background: #123b70;
+      color: white;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 7px 0 14px;
+      border: 1px solid #ccd4df;
+      border-radius: 6px;
+    }
+    .muted { color: #667085; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Wayne Earn</h1>
+    <p>Discover online tasks and earning opportunities</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#tasks">Opportunities</a>
+    <a href="#referrals">Referrals</a>
+    <a href="#register">Join</a>
+  </nav>
+
+  <main>
+    <section class="card hero" id="home">
+      <h2>Welcome to Wayne Earn!</h2>
+      <p>Explore task opportunities, learn how referrals work, and track your progress as the platform develops.</p>
+      <a class="button" href="#tasks">Explore opportunities</a>
+    </section>
+
+    <section class="card" id="tasks">
+      <h2>Available Opportunities</h2>
+      <p>Genuine paid tasks and surveys will be listed here when verified partners are available.</p>
+      <p class="notice"><strong>Coming soon:</strong> No paid tasks are available on this demonstration page yet. Never pay a fee or deposit to unlock tasks.</p>
+    </section>
+
+    <section class="card" id="referrals">
+      <h2>Referral Programme</h2>
+      <p>Referral rewards will be introduced only after the rules, tracking system, and funding are in place.</p>
+      <p class="muted">No referral bonuses or withdrawals are currently active.</p>
+    </section>
+
+    <section class="card" id="register">
+      <h2>Get Updates</h2>
+      <p>This is a preview form. It does not create an account or save your information.</p>
+      <form onsubmit="event.preventDefault(); alert('Registration is not active yet. Please check back later.');">
+        <label for="name">Your name</label>
+        <input id="name" type="text" placeholder="Enter your name" required>
+        <label for="email">Email address</label>
+        <input id="email" type="email" placeholder="Enter your email" required>
+        <button class="button" type="submit">Preview registration</button>
+      </form>
+      <p class="muted">Do not enter passwords or sensitive personal information into this preview.</p>
+    </section>
+
+    <section class="card">
+      <h2>Our Promise</h2>
+      <p>Wayne Earn aims to offer transparent opportunities. Earnings depend on genuine available work; income is not guaranteed.</p>
+      <p>Real accounts, task verification, payment processing, and M-Pesa withdrawals must be implemented and tested before launch.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Wayne Earn</p>
+    <p>Built for a mobile-first experience.</p>
+  </footer>
+</body>
+</html>
