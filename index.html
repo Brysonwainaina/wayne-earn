@@ -1,80 +1,66 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Wayne Earn | Online Opportunities</title>
+  <meta name="description" content="Wayne Earn: online task opportunities and referral information.">
   <style>
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f3f6fb;
-      color: #182230;
+      color: #172033;
     }
     header {
-      background: #123b70;
+      background: #102b50;
       color: white;
       padding: 22px 16px;
       text-align: center;
     }
-    header h1 { margin: 0; }
-    header p { margin-bottom: 0; }
+    header h1 { margin: 0 0 8px; }
     nav {
-      background: #0b2850;
-      padding: 12px;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      background: #174578;
+      padding: 14px;
     }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 9px;
-      font-size: 14px;
-    }
-    main {
-      max-width: 850px;
-      margin: 24px auto;
-      padding: 0 14px;
-    }
+    nav a { color: white; text-decoration: none; }
+    main { max-width: 760px; margin: 22px auto; padding: 0 14px; }
     .card {
       background: white;
       padding: 20px;
       border-radius: 12px;
       margin-bottom: 18px;
-      box-shadow: 0 3px 12px #0000000d;
+      box-shadow: 0 2px 10px #0000000b;
     }
-    .hero { text-align: center; }
-    .button {
-      display: inline-block;
-      background: #147d50;
-      color: white;
-      padding: 12px 18px;
-      border-radius: 7px;
-      text-decoration: none;
-      border: 0;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .notice {
-      background: #fff4d6;
-      padding: 13px;
-      border-left: 4px solid #e4a11b;
-      border-radius: 5px;
-    }
-    footer {
-      text-align: center;
-      padding: 22px;
-      background: #123b70;
-      color: white;
-    }
-    input {
+    h2 { color: #174578; }
+    input, button {
       width: 100%;
-      padding: 12px;
-      margin: 7px 0 14px;
-      border: 1px solid #ccd4df;
-      border-radius: 6px;
+      padding: 13px;
+      margin: 7px 0;
+      border-radius: 7px;
+      font-size: 16px;
     }
-    .muted { color: #667085; font-size: 14px; }
+    input { border: 1px solid #cbd5e1; }
+    button {
+      background: #087f5b;
+      color: white;
+      border: 0;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:disabled { opacity: .6; }
+    .secondary { background: #174578; }
+    .muted { color: #637083; font-size: 14px; }
+    #member { display: none; }
+    #message { overflow-wrap: anywhere; }
+    footer { text-align: center; padding: 25px; color: #637083; }
   </style>
 </head>
 <body>
@@ -86,52 +72,251 @@
   <nav>
     <a href="#home">Home</a>
     <a href="#tasks">Opportunities</a>
-    <a href="#referrals">Referrals</a>
-    <a href="#register">Join</a>
+    <a href="#account">Join / Login</a>
   </nav>
 
   <main>
-    <section class="card hero" id="home">
-      <h2>Welcome to Wayne Earn!</h2>
-      <p>Explore task opportunities, learn how referrals work, and track your progress as the platform develops.</p>
-      <a class="button" href="#tasks">Explore opportunities</a>
+    <section class="card" id="home">
+      <h2>Welcome to Wayne Earn</h2>
+      <p>Explore task opportunities, learn about referrals, and manage your account.</p>
+      <p class="muted">No joining fees or deposits are required by this website. Earnings are not guaranteed.</p>
     </section>
 
     <section class="card" id="tasks">
-      <h2>Available Opportunities</h2>
-      <p>Genuine paid tasks and surveys will be listed here when verified partners are available.</p>
-      <p class="notice"><strong>Coming soon:</strong> No paid tasks are available on this demonstration page yet. Never pay a fee or deposit to unlock tasks.</p>
+      <h2>Opportunities</h2>
+      <p id="taskInfo">Sign in to check whether any tasks are available.</p>
+      <div id="taskList"></div>
+      <p class="muted">Only genuine, verified opportunities should be listed. No paid tasks are active until the administrator publishes them.</p>
     </section>
 
-    <section class="card" id="referrals">
-      <h2>Referral Programme</h2>
-      <p>Referral rewards will be introduced only after the rules, tracking system, and funding are in place.</p>
-      <p class="muted">No referral bonuses or withdrawals are currently active.</p>
-    </section>
-
-    <section class="card" id="register">
-      <h2>Get Updates</h2>
-      <p>This is a preview form. It does not create an account or save your information.</p>
-      <form onsubmit="event.preventDefault(); alert('Registration is not active yet. Please check back later.');">
-        <label for="name">Your name</label>
-        <input id="name" type="text" placeholder="Enter your name" required>
-        <label for="email">Email address</label>
-        <input id="email" type="email" placeholder="Enter your email" required>
-        <button class="button" type="submit">Preview registration</button>
+    <section class="card" id="account">
+      <h2>Create your account</h2>
+      <form id="signupForm">
+        <input id="signupName" type="text" placeholder="Your display name" maxlength="60" required>
+        <input id="signupEmail" type="email" placeholder="Email address" required>
+        <input id="signupPassword" type="password" placeholder="Password (at least 8 characters)" minlength="8" autocomplete="new-password" required>
+        <button id="signupButton" type="submit">Create Account</button>
       </form>
-      <p class="muted">Do not enter passwords or sensitive personal information into this preview.</p>
+
+      <hr>
+
+      <h2>Already registered? Log in</h2>
+      <form id="loginForm">
+        <input id="loginEmail" type="email" placeholder="Email address" autocomplete="email" required>
+        <input id="loginPassword" type="password" placeholder="Password" autocomplete="current-password" required>
+        <button class="secondary" id="loginButton" type="submit">Log In</button>
+      </form>
+
+      <p id="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card" id="member">
+      <h2>Your Member Dashboard</h2>
+      <p id="welcome"></p>
+      <p><strong>Account:</strong> <span id="accountEmail"></span></p>
+      <p><strong>Referral code:</strong> <span id="referralCode">Not available yet</span></p>
+      <p><strong>Recorded earnings:</strong> KSh <span id="earnings">0.00</span></p>
+      <p class="muted">This displays recorded database entries only. It does not mean money is available to withdraw.</p>
+      <button class="secondary" id="refreshButton" type="button">Refresh Dashboard</button>
+      <button id="logoutButton" type="button">Log Out</button>
     </section>
 
     <section class="card">
       <h2>Our Promise</h2>
-      <p>Wayne Earn aims to offer transparent opportunities. Earnings depend on genuine available work; income is not guaranteed.</p>
-      <p>Real accounts, task verification, payment processing, and M-Pesa withdrawals must be implemented and tested before launch.</p>
+      <p>Wayne Earn aims to list transparent opportunities. Never pay a deposit to unlock supposed earnings.</p>
+      <p class="muted">Real task approval, referral rewards, withdrawal processing, and M-Pesa payments are not yet active.</p>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Wayne Earn</p>
-    <p>Built for a mobile-first experience.</p>
-  </footer>
+  <footer>© 2026 Wayne Earn</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://dyatgmlzxetbeohcteez.supabase.co";
+
+    // Replace this placeholder with your Supabase PUBLISHABLE key.
+    const SUPABASE_PUBLISHABLE_KEY = "PASTE_YOUR_PUBLISHABLE_KEY_HERE";
+
+    const client = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const message = document.getElementById("message");
+
+    function showMessage(text) {
+      message.textContent = text;
+    }
+
+    document.getElementById("signupForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (SUPABASE_PUBLISHABLE_KEY === "PASTE_YOUR_PUBLISHABLE_KEY_HERE") {
+        showMessage("Setup incomplete: add your Supabase publishable key first.");
+        return;
+      }
+
+      const button = document.getElementById("signupButton");
+      button.disabled = true;
+      showMessage("Creating your account...");
+
+      try {
+        const name = document.getElementById("signupName").value.trim();
+        const email = document.getElementById("signupEmail").value.trim();
+        const password = document.getElementById("signupPassword").value;
+
+        const { data, error } = await client.auth.signUp({
+          email,
+          password,
+          options: {
+            data: { display_name: name }
+          }
+        });
+
+        if (error) throw error;
+
+        if (data.session) {
+          showMessage("Account created successfully.");
+          await updatePage(data.session.user);
+        } else {
+          showMessage("Registration submitted. Check your email for a verification link, then log in.");
+        }
+      } catch (error) {
+        showMessage("Registration error: " + error.message);
+      } finally {
+        button.disabled = false;
+      }
+    });
+
+    document.getElementById("loginForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const button = document.getElementById("loginButton");
+      button.disabled = true;
+      showMessage("Logging in...");
+
+      try {
+        const email = document.getElementById("loginEmail").value.trim();
+        const password = document.getElementById("loginPassword").value;
+
+        const { data, error } = await client.auth.signInWithPassword({
+          email,
+          password
+        });
+
+        if (error) throw error;
+
+        showMessage("Login successful.");
+        await updatePage(data.user);
+      } catch (error) {
+        showMessage("Login error: " + error.message);
+      } finally {
+        button.disabled = false;
+      }
+    });
+
+    async function updatePage(user) {
+      if (!user) {
+        document.getElementById("member").style.display = "none";
+        return;
+      }
+
+      document.getElementById("member").style.display = "block";
+      document.getElementById("welcome").textContent =
+        "Welcome, " + (user.user_metadata?.display_name || "member") + "!";
+      document.getElementById("accountEmail").textContent = user.email || "";
+
+      const { data: profile, error: profileError } = await client
+        .from("profiles")
+        .select("referral_code")
+        .eq("id", user.id)
+        .maybeSingle();
+
+      document.getElementById("referralCode").textContent =
+        profile?.referral_code || "Profile setup pending";
+
+      const { data: earnings, error: earningsError } = await client
+        .from("earnings")
+        .select("amount_kes")
+        .eq("user_id", user.id)
+        .in("status", ["approved", "paid"]);
+
+      if (earningsError) {
+        document.getElementById("earnings").textContent = "Unavailable";
+      } else {
+        const total = (earnings || []).reduce(
+          (sum, item) => sum + Number(item.amount_kes), 0
+        );
+        document.getElementById("earnings").textContent = total.toFixed(2);
+      }
+
+      const { data: tasks, error: tasksError } = await client
+        .from("tasks")
+        .select("id,title,description,reward_kes")
+        .eq("status", "active")
+        .order("id");
+
+      const taskList = document.getElementById("taskList");
+      taskList.replaceChildren();
+
+      if (tasksError) {
+        document.getElementById("taskInfo").textContent =
+          "Tasks could not be loaded. Please try again later.";
+      } else if (!tasks || tasks.length === 0) {
+        document.getElementById("taskInfo").textContent =
+          "No active tasks are available yet.";
+      } else {
+        document.getElementById("taskInfo").textContent =
+          "Available task listings (rewards are subject to verification):";
+
+        tasks.forEach(task => {
+          const item = document.createElement("article");
+          const title = document.createElement("h3");
+          const description = document.createElement("p");
+          const reward = document.createElement("p");
+
+          title.textContent = task.title;
+          description.textContent = task.description;
+          reward.textContent = "Listed reward: KSh " +
+            Number(task.reward_kes).toFixed(2);
+
+          item.append(title, description, reward);
+          taskList.appendChild(item);
+        });
+      }
+
+      if (profileError) {
+        showMessage("Logged in, but your profile has not been created yet. We'll configure it next.");
+      }
+    }
+
+    document.getElementById("refreshButton").addEventListener("click", async () => {
+      const { data, error } = await client.auth.getUser();
+      if (error || !data.user) {
+        showMessage("Please log in again.");
+        return;
+      }
+      await updatePage(data.user);
+      showMessage("Dashboard refreshed.");
+    });
+
+    document.getElementById("logoutButton").addEventListener("click", async () => {
+      const { error } = await client.auth.signOut();
+      if (error) {
+        showMessage("Logout error: " + error.message);
+        return;
+      }
+      document.getElementById("member").style.display = "none";
+      showMessage("You have logged out.");
+    });
+
+    async function restoreSession() {
+      if (SUPABASE_PUBLISHABLE_KEY === "PASTE_YOUR_PUBLISHABLE_KEY_HERE") return;
+      const { data } = await client.auth.getSession();
+      if (data.session) await updatePage(data.session.user);
+    }
+
+    restoreSession();
+  </script>
 </body>
 </html>
